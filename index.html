@@ -129,8 +129,8 @@
       <div class="row">
         <div class="col s12 m6">
           <h4>The MLP wild ride</h4>
-          <p>Disclaimer, nogle af ditte billeder er markeret som seksuelle i natur, vil arbejde på at disse bliver blacklistet, hvis du ser denne besked er dette nok ikke blevet gjort endnu</p>
-          <div id="api-component-page-three">        </div>
+          <p></p>
+          
         </div>
         
       </div>
@@ -142,9 +142,10 @@
           <!--There are basically two ways to make something happen, when you click an HTML element. This is the first...-->
           <a class="waves-effect waves-light btn-large" onclick="ApiGo()">
             <!--To use google icon font, add a <i> element inside a button link the following way -->
-            <i class="material-icons right">face</i>Random image</a>
+            <i class="material-icons right">face</i>Nyt billede</a>
         </div>
       </div>
+      <div id="api-component-page-three">        </div>
       <div id="api-component-page-two">
       </div>
     </div>
@@ -199,20 +200,31 @@
     <!-- TEMPLATE TO MLP -->
     <script id="api-card-template-three" type="text/x-handlebars-template">
       <div class="row">
-        <div class="col s12 m6">
-          <div class="card blue-grey darken-1">
-            <div class="card-content white-text">
-              <span class="card-title">Upvotes {{faves}} Downvotes {{downvotes}}</span>
-              <p>
-                  <img src="{{image}}"/>
+          <div class="col s12 m7">
+            <div class="card">
+              <div class="card-image">
+                <img src='{{image}}'>
+                <span class="card-title"></span>
+              </div>
+              <div class="card-content">
+                <p>
+                  upvotes: {{score}}
+                <br>
+              Uploadet af {{uploader}}
+              <br>
+              Uploadet: {{created_at}}
+              <br>
+              Virker ikke når billedet er blacklistet, pga tags, dette er den eneste bug jeg kender.
               </p>
-            </div>
-            <div class="card-action">
+              </div>
+              <div class="card-action">
+                Original taget <a href="{{image}}">her</a>
+              </div>
             </div>
           </div>
-      </div>
-    </div>
+        </div> 
 </script>
+<!--originalt taget <a href = > her</a>-->
 
     <!-- Page functionality - Javascripts
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -229,10 +241,12 @@
       var apiSourceThree = $("#api-card-template-three").html();
       var apiTemplateThree = Handlebars.compile(apiSourceThree);
 
+
+//Her laver du et tilfældigt tal 
       function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+  return Math.floor(Math.random() * (max - min)) + min;
 }
 
 
@@ -247,13 +261,26 @@
       }
       // Her har vi derpibooru din cunt ffs lær at læse my god hvad fuck laver du
       function ApiGo() {
+        
         $.ajax({
           url: "https://derpibooru.org/" + getRandomInt(0,99999) +".json",
         }).done(function (data) {
           console.log(data);
+          console.log(data.tags);
+          var banned = ['shipping', 'suggestive','explicit', 'misleading'];
 
+var shitsbanned;
 
-          $('#api-component-page-three').html(apiTemplateThree(data));
+banned.forEach(s => {
+  if(data.tags.includes(s)){
+shitsbanned=true;
+  }
+});
+
+if (!shitsbanned)
+ $('#api-component-page-three').html(apiTemplateThree(data));
+ else {
+ ApiGo()} 
         });
       }
 
