@@ -129,9 +129,10 @@
       <div class="row">
         <div class="col s12 m6">
           <h4>The MLP wild ride</h4>
-          <p>click the button you whore</p>
-          
+          <p>Disclaimer, nogle af ditte billeder er markeret som seksuelle i natur, vil arbejde på at disse bliver blacklistet, hvis du ser denne besked er dette nok ikke blevet gjort endnu</p>
+          <div id="api-component-page-three">        </div>
         </div>
+        
       </div>
 
 
@@ -139,7 +140,7 @@
       <div class="row">
         <div class="col s12 m3">
           <!--There are basically two ways to make something happen, when you click an HTML element. This is the first...-->
-          <a class="waves-effect waves-light btn-large" onclick="ApiGo('999.json')">
+          <a class="waves-effect waves-light btn-large" onclick="ApiGo()">
             <!--To use google icon font, add a <i> element inside a button link the following way -->
             <i class="material-icons right">face</i>Random image</a>
         </div>
@@ -201,18 +202,12 @@
         <div class="col s12 m6">
           <div class="card blue-grey darken-1">
             <div class="card-content white-text">
-              <span class="card-title">{{API}}</span>
+              <span class="card-title">Upvotes {{faves}} Downvotes {{downvotes}}</span>
               <p>
-                {{Description}}
-                <ul>
-                  <li>Auth: {{Auth}}</li>
-                  <li>Category: {{Category}}</li>
-                  <li>HTTPS: {{HTTPS}}</li>
-                </ul>
+                  <img src="{{image}}"/>
               </p>
             </div>
             <div class="card-action">
-              <a href="{{Link}}">{{Link}}</a>
             </div>
           </div>
       </div>
@@ -231,8 +226,15 @@
       var apiTemplateTwo = Handlebars.compile(apiSourceTwo);
 
       // Setup handlebars for MLP API card
-      var apiSourceTwo = $("#api-card-template-three").html();
-      var apiTemplateTwo = Handlebars.compile(apiSourceTwo);
+      var apiSourceThree = $("#api-card-template-three").html();
+      var apiTemplateThree = Handlebars.compile(apiSourceThree);
+
+      function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+}
+
 
       //Functions to actually get JSON data from external API's. When .done is called, you receive the data
       function getApiData(someparam) {
@@ -244,16 +246,18 @@
         });
       }
       // Her har vi derpibooru din cunt ffs lær at læse my god hvad fuck laver du
-      function ApiGo(someparameter) {
+      function ApiGo() {
         $.ajax({
-          url: "https://derpibooru.org/" + someparameter,
+          url: "https://derpibooru.org/" + getRandomInt(0,99999) +".json",
         }).done(function (data) {
           console.log(data);
-          $('#api-component-page-one').html(apiTemplate(data));
+
+
+          $('#api-component-page-three').html(apiTemplateThree(data));
         });
       }
 
-// her er det ikke din abselute retardoboy, dette er til page 2
+      // her er det ikke din abselute retardoboy, dette er til page 2
       function getSomeOtherApiData(querystring) {
         $.ajax({
           url: "https://api.publicapis.org/" + querystring,
