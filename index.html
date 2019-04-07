@@ -130,9 +130,9 @@
         <div class="col s12 m6">
           <h4>The MLP wild ride</h4>
           <p></p>
-          
+
         </div>
-        
+
       </div>
 
 
@@ -145,7 +145,7 @@
             <i class="material-icons right">face</i>Nyt billede</a>
         </div>
       </div>
-      <div id="api-component-page-three">        </div>
+      <div id="api-component-page-three"> </div>
       <div id="api-component-page-two">
       </div>
     </div>
@@ -224,7 +224,7 @@
           </div>
         </div> 
 </script>
-<!--originalt taget <a href = > her</a>-->
+    <!--originalt taget <a href = > her</a>-->
 
     <!-- Page functionality - Javascripts
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -242,12 +242,12 @@
       var apiTemplateThree = Handlebars.compile(apiSourceThree);
 
 
-//Her laver du et tilfældigt tal 
+      //Her laver du et tilfældigt tal 
       function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min)) + min;
-}
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min)) + min;
+      }
 
 
       //Functions to actually get JSON data from external API's. When .done is called, you receive the data
@@ -261,26 +261,28 @@
       }
       // Her har vi derpibooru din cunt ffs lær at læse my god hvad fuck laver du
       function ApiGo() {
-        
+
         $.ajax({
-          url: "https://derpibooru.org/" + getRandomInt(0,99999) +".json",
+          url: "https://derpibooru.org/" + getRandomInt(0, 99999) + ".json",
         }).done(function (data) {
           console.log(data);
           console.log(data.tags);
-          var banned = ['shipping', 'suggestive','explicit', 'misleading'];
+          var banned = ['shipping', 'suggestive', 'explicit', 'misleading', 'fetish', 'nudity', 'nipples',
+            'breasts'];
 
-var shitsbanned;
+          var shitsbanned;
 
-banned.forEach(s => {
-  if(data.tags.includes(s)){
-shitsbanned=true;
-  }
-});
+          banned.forEach(ban => {
+            if (data.tags.includes(ban)) {
+              shitsbanned = true;
+            }
+          });
 
-if (!shitsbanned)
- $('#api-component-page-three').html(apiTemplateThree(data));
- else {
- ApiGo()} 
+          if (!shitsbanned)
+            $('#api-component-page-three').html(apiTemplateThree(data));
+          else {
+            ApiGo()
+          }
         });
       }
 
