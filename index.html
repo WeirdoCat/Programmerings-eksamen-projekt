@@ -44,6 +44,9 @@
   <link rel="icon" type="image/png" href="images/favicon.png">
 
 </head>
+<script>
+  let nummer;
+</script>
 
 <body>
 
@@ -124,7 +127,10 @@
 
 
     </div>
-    <!-- fucking mlp side 3  -->
+
+
+    <!--fucking mlp side 3-->
+
     <div id="page-three">
       <div class="row">
         <div class="col s12 m6">
@@ -247,7 +253,9 @@
         min = Math.ceil(min);
         max = Math.floor(max);
         return Math.floor(Math.random() * (max - min)) + min;
-      }
+      };
+
+      function getRandomIntBB() {}
 
 
       //Functions to actually get JSON data from external API's. When .done is called, you receive the data
@@ -259,31 +267,42 @@
           $('#api-component-page-one').html(apiTemplate(data));
         });
       }
+
       // Her har vi derpibooru din cunt ffs lær at læse my god hvad fuck laver du
       function ApiGo() {
-
         $.ajax({
-          url: "https://derpibooru.org/" + getRandomInt(0, 99999) + ".json",
-        }).done(function (data) {
-          console.log(data);
-          console.log(data.tags);
-          var banned = ['shipping', 'suggestive', 'explicit', 'misleading', 'fetish', 'nudity', 'nipples',
-            'breasts'];
+          url: "https://derpibooru.org/search.json?q=*&random_image=y",
+        }).done(function (number) {
+          console.log("Number.id" + number.id);
+          nummer = number.id;
 
-          var shitsbanned;
+          $.ajax({
+            url: "https://derpibooru.org/" + nummer + ".json",
+          }).done(function (data) {
+            console.log(data);
+            console.log(data.tags);
+            var banned = ['shipping', 'suggestive', 'explicit', 'misleading', 'fetish', 'nudity', 'nipples',
+              'breasts'
+            ];
 
-          banned.forEach(ban => {
-            if (data.tags.includes(ban)) {
-              shitsbanned = true;
+            var shitsbanned;
+
+            banned.forEach(ban => {
+              if (data.tags.includes(ban)) {
+                shitsbanned = true;
+              }
+            });
+
+            if (!shitsbanned)
+              $('#api-component-page-three').html(apiTemplateThree(data));
+            else {
+              ApiGo()
             }
           });
 
-          if (!shitsbanned)
-            $('#api-component-page-three').html(apiTemplateThree(data));
-          else {
-            ApiGo()
-          }
+
         });
+
       }
 
       // her er det ikke din abselute retardoboy, dette er til page 2
