@@ -1,15 +1,13 @@
 Oliver Aagaard Madsen
 
-    Some public API with little or no authentication
+Dette er et program der finder billeder fra et API der hedder derpibooru,dette gør den med hjælp af
     Handlebars javascript
     Materialize css
     jQuery
+Handlebars bliver brugt til atbruge data som man får fra apiet nemmere, materialize bliver brugt til at sætte tin op rigtigt og jquery bliver brugt til at kunne skrive javascript kode i html filer.
 
-To get started, download the project and open index.html in your browser as well as in a code editor. Study the structure to get an overall picture of how handlebars, jQuery and Materialize work together to show the results from the API queries.
 
-Use the template to create your own app with an API of your liking or needs.
-
-Derpibooru image finder
+Derpibooru image database
 
 Kodesprog: Javascript
 
@@ -28,5 +26,3 @@ https://api.publicapis.org/
 https://derpibooru.org/
 
 Der er en hjemmeside der hedder derpibooru, praktisk talt er dette en hub fyldt emd en masse billeder, jeg er begyndt at prøve at forstå deres api som inkluderer alle deres billeder. Dette er stadigt meget værrere end deres hjemmeside, men man skal jo starte et sted.
-
-z
