@@ -1,11 +1,8 @@
+
+
 Oliver Aagaard Madsen
 
-Dette er et program der finder billeder fra et API der hedder derpibooru,dette gør den med hjælp af
-    Handlebars javascript
-    Materialize css
-    jQuery
-Handlebars bliver brugt til atbruge data som man får fra apiet nemmere, materialize bliver brugt til at sætte tin op rigtigt og jquery bliver brugt til at kunne skrive javascript kode i html filer.
-
+Dette er et program der finder billeder fra et API der hedder derpibooru,dette gør den med hjælp af Handlebars javascript Materialize css jQuery Handlebars bliver brugt til atbruge data som man får fra apiet nemmere, materialize bliver brugt til at sætte tin op rigtigt og jquery bliver brugt til at kunne skrive javascript kode i html filer.
 
 Derpibooru image database
 
