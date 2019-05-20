@@ -91,17 +91,13 @@
         
         <div class="col s12 m3">
           <!---->
-          <a class="waves-effect waves-light btn-large" onclick="ApiGo()">
+          <a class="waves-effect waves-light btn-large" onclick="apiTwi()">
              <!--Når man kigger ved i'et kan man lægge et "google font face ind dette giver et 
               sjovt lille billede efter i'et kan man sætte tekst ind som der kommer til at være på knappen" -->
-            <i class="material-icons right"></i>Twilligt billeder</a>
+            <i class="material-icons right"></i>twilight pics</a>
         </div>
         
-     
-          <div class="input-field col s6">
-            <input value="NSFW" id="first_name2" type="text" class="validate">
-            <label class="active" for="first_name2">Category for picture</label>
-          </div>
+
    
 
 
@@ -214,7 +210,55 @@
         });
 
       }
-      function picbytag(){
+      function apiTwi(){
+        $.ajax({
+          url: "https://derpibooru.org/search.json?q=*&random_image=y",
+        }).done(function (Ponybillede) {
+          console.log("Number.id " + Ponybillede.id);
+          nummer = Ponybillede.id;
+
+
+          $.ajax({
+            url: "https://derpibooru.org/" + nummer + ".json",
+          }).done(function (data) {
+            console.log(data);
+            console.log(data.tags);
+            //herunder er enliste med alle tags jeg ikke vil have billederne skal indeholde
+            var banned = ['suggestive', 'explicit', 'misleading', 'fetish', 'nudity', 'nipples'];
+
+var category = 'twilight';
+
+
+
+// her sorterer jeg alt pornoet væk
+            var shitsbanned;
+var cattrue
+
+
+
+            banned.forEach(ban => {
+              if (data.tags.includes(ban)) {
+                shitsbanned = true;
+              }
+            });
+
+  //her sorterer jeg alt andet end den katagori der bliver ledt efter
+              if (data.tags.includes(category)) {
+                cattrue = true;
+              };
+
+
+
+
+            if (!shitsbanned && cattrue)
+              $('#api-component-pony').html(apiTemplateThree(data));
+            else {
+              apiTwi()
+            }
+          });
+
+
+        });
         
       }
 
