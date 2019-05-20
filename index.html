@@ -6,7 +6,7 @@
   <!-- Basic Page Needs
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
-  <title>Your page title here :)</title>
+  <title>dab</title>
   <meta name="description" content="">
   <meta name="author" content="">
 
@@ -59,82 +59,18 @@
         <nav>
           <div class="nav-wrapper">
             <ul id="nav-mobile" class="left">
-              <li id="menu-page-one"><a href="#">Page 1</a></li>
-              <li id="menu-page-two"><a href="#">Page 2</a></li>
-              <li id="menu-page-three"><a href="#">Page 3</a></li>
+              <li id="menu-pony"><a href="#">The Pony wild ride</a></li>
             </ul>
           </div>
         </nav>
       </div>
     </div>
+    <!--Dette er mlp siden-->
 
-
-    <div id="page-one">
+    <div id="pony">
       <div class="row">
         <div class="col s12 m6">
-          <h4>Single page API app</h4>
-          <p>Go to page 2 and find an API of your liking. Then begin coding a complete web-app to suit your needs.</p>
-          <p>Below this text, you can see an example of how to pull API data into your app. The page basically uses
-            three techonologies to make this happen:</p>
-          <ol>
-            <li><a href="https://api.jquery.com/">jQuery</a> - to make asynchronous API calls and manipulate DOM
-              elements.</li>
-            <li><a href="https://handlebarsjs.com/">Handlebars.js</a> - to make HTML templates and insert well-formatted
-              JSON.</li>
-            <li><a href="https://materializecss.com/">Materialize.css</a> - to make the page look great.</li>
-          </ol>
-          <hr />
-          <h5>Example card from the Bored api</h5>
-        </div>
-      </div>
-      <div id="api-component-page-one">
-      </div>
-    </div>
-
-    <div id="page-two">
-      <div class="row">
-        <div class="col s12 m6">
-          <h4>Page 2</h4>
-          <p>Click the button to get suggestions for public API's with no authentication.</p>
-          <p>Follow the link to see the API documentation. Remark: every API has one or more "endpoints" - this is
-            basically a root url to access the API. Then most API's have additional "query values", which is used to
-            specify further parameters.
-            <p>For example:
-              <ul>
-                <li>Root url: "https://www.boredapi.com/api/activity"</li>
-                <li>Querystring: "?participants=4"</li>
-              </ul>
-              By connecting these two strings in an AJAX call, you will receive a JSON formatted acitivity for 4 people
-            </p>
-          </p>
-        </div>
-      </div>
-
-
-
-
-      <div class="row">
-        <div class="col s12 m3">
-          <!--There are basically two ways to make something happen, when you click an HTML element. This is the first...-->
-          <a class="waves-effect waves-light btn-large" onclick="getSomeOtherApiData('random?auth=null')">
-            <!--To use google icon font, add a <i> element inside a button link the following way -->
-            <i class="material-icons right">face</i>Public API Random</a>
-        </div>
-      </div>
-      <div id="api-component-page-two">
-      </div>
-
-
-
-    </div>
-
-
-    <!--fucking mlp side 3-->
-
-    <div id="page-three">
-      <div class="row">
-        <div class="col s12 m6">
-          <h4>The MLP wild ride</h4>
+          <h4></h4>
           <p></p>
 
         </div>
@@ -142,18 +78,36 @@
       </div>
 
 
-
+ <!---->
       <div class="row">
+        
         <div class="col s12 m3">
-          <!--There are basically two ways to make something happen, when you click an HTML element. This is the first...-->
+          <!---->
           <a class="waves-effect waves-light btn-large" onclick="ApiGo()">
-            <!--To use google icon font, add a <i> element inside a button link the following way -->
-            <i class="material-icons right">face</i>Nyt billede</a>
+             <!--Når man kigger ved i'et kan man lægge et "google font face ind dette giver et 
+              sjovt lille billede efter i'et kan man sætte tekst ind som der kommer til at være på knappen" -->
+            <i class="material-icons right"></i>SFW billede</a>
         </div>
+        
+        <div class="col s12 m3">
+          <!---->
+          <a class="waves-effect waves-light btn-large" onclick="ApiGo()">
+             <!--Når man kigger ved i'et kan man lægge et "google font face ind dette giver et 
+              sjovt lille billede efter i'et kan man sætte tekst ind som der kommer til at være på knappen" -->
+            <i class="material-icons right"></i>NSFW billede</a>
+        </div>
+        
+     
+          <div class="input-field col s6">
+            <input value="NSFW" id="first_name2" type="text" class="validate">
+            <label class="active" for="first_name2">Category for picture</label>
+          </div>
+   
+
+
       </div>
-      <div id="api-component-page-three"> </div>
-      <div id="api-component-page-two">
-      </div>
+      <div id="api-component-pony"> </div>
+ 
     </div>
 
 
@@ -179,29 +133,7 @@
     </div>
 </script>
 
-    <!-- TEMPLATE TO PUBLIC API'S -->
-    <script id="api-card-template-two" type="text/x-handlebars-template">
-      <div class="row">
-        <div class="col s12 m6">
-          <div class="card blue-grey darken-1">
-            <div class="card-content white-text">
-              <span class="card-title">{{API}}</span>
-              <p>
-                {{Description}}
-                <ul>
-                  <li>Auth: {{Auth}}</li>
-                  <li>Category: {{Category}}</li>
-                  <li>HTTPS: {{HTTPS}}</li>
-                </ul>
-              </p>
-            </div>
-            <div class="card-action">
-              <a href="{{Link}}">{{Link}}</a>
-            </div>
-          </div>
-      </div>
-    </div>
-</script>
+
 
     <!-- TEMPLATE TO MLP -->
     <script id="api-card-template-three" type="text/x-handlebars-template">
@@ -235,58 +167,36 @@
     <!-- Page functionality - Javascripts
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
     <script>
-      // Setup handlebars for first API card
-      var apiSource = $("#api-card-template").html();
-      var apiTemplate = Handlebars.compile(apiSource);
-
-      // Setup handlebars for second API card
-      var apiSourceTwo = $("#api-card-template-two").html();
-      var apiTemplateTwo = Handlebars.compile(apiSourceTwo);
-
       // Setup handlebars for MLP API card
       var apiSourceThree = $("#api-card-template-three").html();
       var apiTemplateThree = Handlebars.compile(apiSourceThree);
 
 
-      //Her laver du et tilfældigt tal 
-      function getRandomInt(min, max) {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min)) + min;
-      };
-
-      function getRandomIntBB() {}
 
 
-      //Functions to actually get JSON data from external API's. When .done is called, you receive the data
-      function getApiData(someparam) {
-        $.ajax({
-          url: "https://www.boredapi.com/api/activity?participants=" + someparam,
-        }).done(function (data) {
-          console.log(data);
-          $('#api-component-page-one').html(apiTemplate(data));
-        });
-      }
-
-      // Her har vi derpibooru din cunt ffs lær at læse my god hvad fuck laver du
+      // hernede under bruger jeg funktionen "https://derpibooru.org/search.json?q=*&random_image=y" 
+      //denne giver mig tallet på det billede jeg skal bruge
       function ApiGo() {
         $.ajax({
           url: "https://derpibooru.org/search.json?q=*&random_image=y",
-        }).done(function (number) {
-          console.log("Number.id" + number.id);
-          nummer = number.id;
+        }).done(function (Ponybillede) {
+          console.log("Number.id" + Ponybillede.id);
+          nummer = Ponybillede.id;
+
 
           $.ajax({
             url: "https://derpibooru.org/" + nummer + ".json",
           }).done(function (data) {
             console.log(data);
             console.log(data.tags);
+            //herunder laver jeg en string fyldt med alle de tags billeder jeg ikke kan lide ville have
             var banned = ['shipping', 'suggestive', 'explicit', 'misleading', 'fetish', 'nudity', 'nipples',
               'breasts'
             ];
 
             var shitsbanned;
-
+//Her er Hampusses magnum opus dette er et foreachloop den tager de tags jeg har, tjekker om de er på billedet
+//Hvis de så er på billedet bliver en variabel true, dette resulterer i at der bliver tjekket efter et nyt billede
             banned.forEach(ban => {
               if (data.tags.includes(ban)) {
                 shitsbanned = true;
@@ -294,7 +204,7 @@
             });
 
             if (!shitsbanned)
-              $('#api-component-page-three').html(apiTemplateThree(data));
+              $('#api-component-pony').html(apiTemplateThree(data));
             else {
               ApiGo()
             }
@@ -305,39 +215,19 @@
 
       }
 
-      // her er det ikke din abselute retardoboy, dette er til page 2
-      function getSomeOtherApiData(querystring) {
-        $.ajax({
-          url: "https://api.publicapis.org/" + querystring,
-        }).done(function (data) {
-          console.log(data);
-          $('#api-component-page-two').html(apiTemplateTwo(data.entries[0]));
-        });
-      }
+
 
       //Handle menu - first show page one no matter what
-      getApiData(1)
-      $('#page-two').hide();
-      $('#page-one').hide();
+
 
       //When someone clicks the page one navigation link
       //This is the second way to make something happen, when you click an HTML element
-      $('#menu-page-one').click(function () {
-        getApiData(1)
-        $('#page-one').show();
-        $('#page-two').hide();
-        $('#page-three').hide();
-      });
+
       //When someone clicks the page two navigation link
-      $('#menu-page-two').click(function () {
-        $('#page-one').hide();
-        $('#page-two').show();
-        $('#page-three').hide();
-      });
-      $('#menu-page-three').click(function () {
-        $('#page-one').hide();
-        $('#page-two').hide();
-        $('#page-three').show();
+
+      $('#menu-pony').click(function () {
+
+        $('#pony').show();
       });
     </script>
 
