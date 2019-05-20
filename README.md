@@ -1,4 +1,4 @@
-# api_one_page_template This is a one-page template to make a neat web-app using an external API with jQuery. The app use the following frameworks and boilerplates:
+Oliver Aagaard Madsen
 
     Some public API with little or no authentication
     Handlebars javascript
