@@ -78,32 +78,39 @@
       </div>
 
 
- <!---->
+      <!---->
       <div class="row">
-        
+
         <div class="col s12 m3">
           <!---->
-          <a class="waves-effect waves-light btn-large" onclick="ApiGo()">
-             <!--Når man kigger ved i'et kan man lægge et "google font face ind dette giver et 
+          <a class="waves-effect waves-light btn-small" onclick="ApiGo()">
+            <!--Når man kigger ved i'et kan man lægge et "google font face ind dette giver et 
               sjovt lille billede efter i'et kan man sætte tekst ind som der kommer til at være på knappen" -->
             <i class="material-icons right"></i>SFW billede</a>
         </div>
-        
+
         <div class="col s12 m3">
           <!---->
-          <a class="waves-effect waves-light btn-large" onclick="apiTwi()">
-             <!--Når man kigger ved i'et kan man lægge et "google font face ind dette giver et 
+          <a class="waves-effect waves-light btn-small" onclick="apiTwi()">
+            <!--Når man kigger ved i'et kan man lægge et "google font face ind dette giver et 
               sjovt lille billede efter i'et kan man sætte tekst ind som der kommer til at være på knappen" -->
             <i class="material-icons right"></i>twilight pics</a>
         </div>
-        
 
-   
+        <div class="row">
+          <div class="input-field col s6">
+            <input value="Twillight" id="first_name2" type="text" class="validate">
+            <label class="active" for="first_name2">Category</label>
+          </div>
+        </div>
+
+
+
 
 
       </div>
       <div id="api-component-pony"> </div>
- 
+
     </div>
 
 
@@ -191,8 +198,8 @@
             ];
 
             var shitsbanned;
-//Her er Hampusses magnum opus dette er et foreachloop den tager de tags jeg har, tjekker om de er på billedet
-//Hvis de så er på billedet bliver en variabel true, dette resulterer i at der bliver tjekket efter et nyt billede
+            //Her er Hampusses magnum opus dette er et foreachloop den tager de tags jeg har, tjekker om de er på billedet
+            //Hvis de så er på billedet bliver en variabel true, dette resulterer i at der bliver tjekket efter et nyt billede
             banned.forEach(ban => {
               if (data.tags.includes(ban)) {
                 shitsbanned = true;
@@ -210,7 +217,8 @@
         });
 
       }
-      function apiTwi(){
+
+      function apiTwi() {
         $.ajax({
           url: "https://derpibooru.org/search.json?q=*&random_image=y",
         }).done(function (Ponybillede) {
@@ -226,13 +234,13 @@
             //herunder er enliste med alle tags jeg ikke vil have billederne skal indeholde
             var banned = ['suggestive', 'explicit', 'misleading', 'fetish', 'nudity', 'nipples'];
 
-var category = 'twilight';
+            var category = 'twilight';
 
 
 
-// her sorterer jeg alt pornoet væk
+            // her sorterer jeg alt pornoet væk
             var shitsbanned;
-var cattrue
+            var cattrue
 
 
 
@@ -242,10 +250,10 @@ var cattrue
               }
             });
 
-  //her sorterer jeg alt andet end den katagori der bliver ledt efter
-              if (data.tags.includes(category)) {
-                cattrue = true;
-              };
+            //her sorterer jeg alt andet end den katagori der bliver ledt efter
+            if (data.tags.includes(category)) {
+              cattrue = true;
+            };
 
 
 
@@ -259,7 +267,7 @@ var cattrue
 
 
         });
-        
+
       }
 
 
